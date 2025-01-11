@@ -12,6 +12,11 @@
     <None Remove="Repositories\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="Repositories\Contracts\IUserAccount.cs" />
+    <Compile Include="Repositories\Implementations\UserAccountRepository.cs" />
+  </ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
@@ -23,11 +28,6 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.0.3" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Repositories\Contracts\" />
-		<Folder Include="Repositories\Implementations\" />
 	</ItemGroup>
 
 	<ItemGroup>
