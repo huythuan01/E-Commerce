@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -7,13 +7,35 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\AccountPages\RegisterPage.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+	
+    <PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
+	
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="8.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.7" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BaseLibrary\BaseLibrary.csproj" />
     <ProjectReference Include="..\ClientLibrary\ClientLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\AccountPages\RegisterPage.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\AccountPages\RegisterPage.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\AccountPages\Register\RegisterPage.razor" />
   </ItemGroup>
 
 </Project>
