@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Layout\AuthenticationLayout.razor" />
     <Content Remove="Pages\AccountPages\RegisterPage.razor" />
+    <Content Remove="Pages\DepartmentPages\GeneralDepartmentDialog.razor" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +21,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.7" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+    <PackageReference Include="Syncfusion.Blazor.Buttons" Version="26.2.12" />
+    <PackageReference Include="Syncfusion.Blazor.Popups" Version="26.2.12" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="28.1.35" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,11 +36,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="Layout\AuthenticationLayout.razor" />
     <_ContentIncludedByDefault Remove="Pages\AccountPages\RegisterPage.razor" />
+    <_ContentIncludedByDefault Remove="Pages\DepartmentPages\GeneralDepartmentDialog.razor" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Layout\AuthenticationLayout\AuthenticationLayout.razor" />
     <None Include="Pages\AccountPages\Register\RegisterPage.razor" />
+    <None Include="Pages\DepartmentPages\Dialog\GeneralDepartmentDialog.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Layout\AuthenticationLayout.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\DepartmentPages\GeneralDepartmentDialog.razor" />
   </ItemGroup>
 
 </Project>

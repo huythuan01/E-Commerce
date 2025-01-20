@@ -1,13 +1,27 @@
 ﻿@page "/identity/account/register"
+@using Client.Layout.AuthenticationLayout
+@using Syncfusion.Blazor.Popups
+@layout AuthenticationLayout
+@inject SfDialogService DialogService
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
             <EditForm Model="User" OnValidSubmit="HandleRegistration">
                 <DataAnnotationsValidator />
-                <ValidationSummary />
-                <div class="card">
-                    <div class="card-header">Fill this form to Register</div>
+                
+                <div class="card bg-dark d-flex justify-content-center" style="opacity:0.5; margin-top:50%; border-radius:10px; color:white; font-weight:bold">
+                    <div class="card-header">Register an account</div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4"></div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 d-flex justify-content-center">
+                                <img style="border-radius:20px" src="../images/companylogos/logo.png" height="50" width="50" />
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4"></div>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <div class="form-group">
                             <label class="form-label">Fullname</label>
@@ -26,28 +40,68 @@
                             <InputText type="password" class="form-control" @bind-Value="User.ConfirmPassword" />
                         </div>
                         <div class="form-group mt-3">
-                            <button class="btn btn-outline-primary float-end" type="submit">Register</button>
+                            @if (ShowLoadingButton)
+                            {
+                                <Client.Pages.OtherPages.ButtonLoadingSpinner />
+                            }
+                            else
+                            {
+                                <button class="btn btn-outline-primary float-end" type="submit">Register</button>
+                            }
                         </div>
+                    </div>
+                    <div class="card-footer">
+                        <sapn class="text-center">
+                            Have account already?
+                            <a class="btn-link" href="identity/account/login">Sign In</a>
+                        </sapn>
+                        <ValidationSummary />
                     </div>
                 </div>
             </EditForm>
         </div>
+        <div class="col-lg-4"></div>
     </div>
 </div>
 
 @code {
+    public bool ShowLoadingButton { get; set; } = false;
     Register User = new();
+
+    [CascadingParameter] public Task<AuthenticationState> AuthenticationState { get; set; }
+    protected async override Task OnInitializedAsync()
+    {
+        await CheckUserAuthentication();
+    }
 
     async Task HandleRegistration()
     {
+        ShowLoadingButton = true;
         var result = await accountService.CreateAsync(User);
         if (result.Flag)
         {
+            await DisplayDialog(result.Message, "Registration Success");
             User = new();
         }
         else
         {
-            // Xử lý lỗi đăng ký
+            await DisplayDialog(result.Message, "Registration Failed");
+        }
+        ShowLoadingButton = false;
+    }
+
+    private async Task DisplayDialog(string content, string title)
+    {
+        await DialogService.AlertAsync(content, title);
+    }
+
+    private async Task CheckUserAuthentication()
+    {
+        var user = (await AuthenticationState).User;
+        bool isUserAuthenticated = user.Identity!.IsAuthenticated;
+        if (isUserAuthenticated)
+        {
+            NavManager.NavigateTo("home/dashboard");
         }
     }
 }
