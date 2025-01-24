@@ -1,3 +1,4 @@
+using BaseLibrary.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -48,6 +49,15 @@ builder.Services.AddAuthentication(options =>
 });
 
 builder.Services.AddScoped<IUserAccount, UserAccountRepository>();
+
+builder.Services.AddScoped<IGenericRepositoryInterface<Country>, CountryRepository>();
+builder.Services.AddScoped<IGenericRepositoryInterface<City>, CityRepository>();
+builder.Services.AddScoped<IGenericRepositoryInterface<Town>, TownRepository>();
+
+builder.Services.AddScoped<IGenericRepositoryInterface<GeneralDepartment>, GeneralDepartmentRepository>();
+builder.Services.AddScoped<IGenericRepositoryInterface<Department>, DepartmentRepository>();
+builder.Services.AddScoped<IGenericRepositoryInterface<Branch>, BranchRepository>();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowBlazorWasm",
@@ -68,7 +78,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My EmployeeManagement API V1");
     });
 }
 
