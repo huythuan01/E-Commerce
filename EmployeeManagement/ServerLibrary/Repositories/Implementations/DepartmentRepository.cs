@@ -23,7 +23,10 @@ namespace ServerLibrary.Repositories.Implementations
             return Success();
         }
 
-        public async Task<List<Department>> GetAll() => await appDbContext.Departments.ToListAsync();
+        public async Task<List<Department>> GetAll() => await appDbContext
+            .Departments.AsNoTracking()
+            .Include(gd => gd.GeneralDepartment)
+            .ToListAsync();
 
         public async Task<Department> GetById(int id) => await appDbContext.Departments.FindAsync(id);
 
@@ -40,6 +43,7 @@ namespace ServerLibrary.Repositories.Implementations
             var dep = await appDbContext.Departments.FindAsync(item.Id);
             if (dep is null) return Notfound();
             dep.Name = item.Name;
+            dep.GeneralDepartmentId = item.GeneralDepartmentId;
             await Commit();
             return Success();
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace BaseLibrary.Entities
@@ -13,6 +14,7 @@ namespace BaseLibrary.Entities
         public int? CountryId { get; set; }
 
         //One to many relationship with Town
+        [JsonIgnore]
         public List<Town>? Towns { get; set; }
     }
 }
