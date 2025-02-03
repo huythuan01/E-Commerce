@@ -22,6 +22,7 @@
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
     <PackageReference Include="Syncfusion.Blazor.Buttons" Version="26.2.12" />
     <PackageReference Include="Syncfusion.Blazor.DropDowns" Version="26.2.12" />
+    <PackageReference Include="Syncfusion.Blazor.Grid" Version="26.2.12" />
     <PackageReference Include="Syncfusion.Blazor.Popups" Version="26.2.12" />
     <PackageReference Include="Syncfusion.Blazor.Themes" Version="28.1.35" />
   </ItemGroup>
@@ -39,6 +40,7 @@
     <_ContentIncludedByDefault Remove="Layout\AuthenticationLayout.razor" />
     <_ContentIncludedByDefault Remove="Pages\AccountPages\RegisterPage.razor" />
     <_ContentIncludedByDefault Remove="Pages\ContentPages\DepartmentPages\GeneralDepartmentDialog.razor" />
+    <_ContentIncludedByDefault Remove="Pages\ContentPages\LocationPages\CityPage.razor" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,6 +48,7 @@
     <None Include="Pages\AccountPages\Register\RegisterPage.razor" />
     <None Include="Pages\ContentPages\DepartmentPages\DepartmentDialog.razor" />
     <None Include="Pages\ContentPages\DepartmentPages\GeneralDepartmentDialog.razor" />
+    <None Include="Pages\ContentPages\LocationPages\CityPage.razor" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,6 +57,10 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Pages\ContentPages\DepartmentPages\GeneralDepartmentDialog.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\ContentPages\LocationPages\CityPage.razor" />
   </ItemGroup>
 
 </Project>

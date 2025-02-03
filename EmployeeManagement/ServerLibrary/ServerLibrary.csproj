@@ -19,6 +19,7 @@
     <Compile Include="Repositories\Implementations\CityRepository.cs" />
     <Compile Include="Repositories\Implementations\CountryRepository.cs" />
     <Compile Include="Repositories\Implementations\DepartmentRepository.cs" />
+    <Compile Include="Repositories\Implementations\EmployeeRepository.cs" />
     <Compile Include="Repositories\Implementations\GeneralDepartmentRepository.cs" />
     <Compile Include="Repositories\Implementations\TownRepository.cs" />
     <Compile Include="Repositories\Implementations\UserAccountRepository.cs" />

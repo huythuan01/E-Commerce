@@ -58,6 +58,8 @@ builder.Services.AddScoped<IGenericRepositoryInterface<GeneralDepartment>, Gener
 builder.Services.AddScoped<IGenericRepositoryInterface<Department>, DepartmentRepository>();
 builder.Services.AddScoped<IGenericRepositoryInterface<Branch>, BranchRepository>();
 
+builder.Services.AddScoped<IGenericRepositoryInterface<Employee>, EmployeeRepository>();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowBlazorWasm",
